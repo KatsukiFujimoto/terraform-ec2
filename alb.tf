@@ -37,7 +37,7 @@ resource "aws_security_group_rule" "lb_inbound_https" {
 
 # Load Balancer
 resource "aws_lb" "app" {
-  depends_on         = [aws_security_group.lb]
+  depends_on         = [aws_security_group.lb, aws_subnet.public_a, aws_subnet.public_c]
   internal           = false
   load_balancer_type = "application"
   # enable_deletion_protection = true # protect from deletion in production
